@@ -1,5 +1,5 @@
 <template>
     <div class="panel" style="min-height: 750px;">
-        About
+        Contact Us
     </div>
 </template>
