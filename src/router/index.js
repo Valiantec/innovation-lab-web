@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import JoinUs from '../views/JoinUs.vue';
 import ContactUs from '../views/ContactUs.vue';
+import Suggestion from '../views/Suggestion.vue';
 
 const routes = [
     {
@@ -27,6 +28,11 @@ const routes = [
         path: '/contact-us',
         name: 'ContactUs',
         component: ContactUs
+    },
+    {
+        path: '/suggestion',
+        name: 'Suggestion',
+        component: Suggestion
     }
 ];
 

@@ -35,7 +35,8 @@
                 { label: 'Home', to: '/' },
                 { label: 'About', to: '/about' },
                 { label: 'Join us', to: '/join-us' },
-                { label: 'Contact us', to: '/contact-us' }
+                { label: 'Contact us', to: '/contact-us' },
+                { label: 'Suggestions', to: '/suggestion' }
             ]
         })
     };

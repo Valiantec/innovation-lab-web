@@ -1,18 +1,13 @@
+import axios from 'axios';
+import config from '../../config';
+
 export default {
-    getImages() {
-        return [
-            {
-                title: 'Our Vision',
-                image: 'img1.jpg'
-            },
-            {
-                title: 'Item 2',
-                image: 'img2.jpg'
-            },
-            {
-                title: 'Item 3',
-                image: 'img3.jpg'
-            }
-        ]
+    suggestion: {
+        getAll: async () => {
+            return axios.get(`${config.backendUri}/suggestions`);
+        },
+        addSuggestion: async (name, suggestion) => {
+            return axios.post(`${config.backendUri}/suggestions/add`, {name, suggestion});
+        }
     }
-}
+};

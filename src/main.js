@@ -10,6 +10,8 @@ import 'primeicons/primeicons.css'; //icons
 
 // PrimeVue Components:
 import Menubar from 'primevue/menubar';
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
 import Panel from 'primevue/panel';
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
@@ -26,6 +28,8 @@ app.use(ToastService);
 app.use(router);
 
 app.component('Menubar', Menubar);
+app.component('TabView', TabView);
+app.component('TabPanel', TabPanel);
 app.component('Panel', Panel);
 app.component('Card', Card);
 app.component('InputText', InputText);
