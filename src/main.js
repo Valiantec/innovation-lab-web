@@ -11,6 +11,7 @@ import 'primeicons/primeicons.css'; //icons
 // PrimeVue Components:
 import Menubar from 'primevue/menubar';
 import Panel from 'primevue/panel';
+import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import Dropdown from 'primevue/dropdown';
@@ -26,6 +27,7 @@ app.use(router);
 
 app.component('Menubar', Menubar);
 app.component('Panel', Panel);
+app.component('Card', Card);
 app.component('InputText', InputText);
 app.component('Textarea', Textarea);
 app.component('Dropdown', Dropdown);

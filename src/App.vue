@@ -1,15 +1,21 @@
 <template>
     <Toast position="top-right" />
     <!-- Header -->
-    <Menubar :model="navItems">
-        <template #start>
-            <img alt="logo" src="@/assets/sssdlogo.png" height="40" style="margin-left:0.7em;" />
-        </template>
-    </Menubar>
+    <div style="background-color:#fefefe;width:100%;height:4rem;position:fixed;top:0px;left:0px;display:flex;justify-content:center;align-items:center;">
+        <router-link v-for="item in navItems" :key="item.label" :to="item.to" style="margin-inline:1rem;text-decoration: none;height:100%;" class="nav-item">
+            <div style="width:100px; text-align:center; line-height:4rem;">
+                {{ item.label }}
+            </div>
+        </router-link>
+    </div>
 
     <!-- Content -->
-    <div style="margin-top: 8px; min-height: 800px;">
-        <router-view />
+    <div style="margin-top: 6em;">
+        <router-view v-slot="{Component}">
+            <transition name="fadescale" mode="out-in">
+                <component :is="Component" :key="$route.path"></component>
+            </transition>
+        </router-view>
     </div>
 
     <!-- Footer -->
@@ -69,5 +75,25 @@
 
     .input-field {
         margin-top: 8px;
+    }
+
+    .nav-item {
+        color:#555555;
+    }
+
+    a.router-link-exact-active {
+        background-color: rgb(232, 255, 246);
+        outline: solid 7px rgb(166, 255, 218);
+        font-weight: bold;
+    }
+
+    .fadescale-enter-active,
+    .fadescale-leave-active {
+        transition: opacity 0.2s, transform 0.2s;
+    }
+    .fadescale-enter-from,
+    .fadescale-leave-to {
+        opacity: 0;
+        transform: scale(90%);
     }
 </style>

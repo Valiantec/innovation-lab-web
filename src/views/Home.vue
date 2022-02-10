@@ -1,100 +1,91 @@
 <template>
     <div>
-        <div style="display: flex">
-            <div class="rounded-corners">
-                <Galleria
-                    :value="images"
-                    :responsiveOptions="responsiveOptions"
-                    :numVisible="5"
-                    containerStyle="max-width: 720px"
-                >
-                    <template #item="{ item }">
-                        <img
-                            :src="require('@/assets/' + item.image)"
-                            style="width: 100%; display: block"
-                        />
-                    </template>
-                    <template #thumbnail="{ item }">
-                        <div class="thumbnails">
-                            <img
-                                :src="require('@/assets/' + item.image)"
-                                style="display: block; height: 70px"
-                            />
-                        </div>
-                    </template>
-                    <template #caption="{ item }">
-                        <h2 style="margin-bottom: 0.5em; margin-top: 0em;">{{ item.title }}</h2>
-                    </template>
-                </Galleria>
-            </div>
-            <div class="panel" style="margin-left: 8px; width: 250px">
+        <div
+            style="
+                display: grid;
+                grid-gap: 8px;
+                grid-template-columns: 20% auto 20%;
+            "
+        >
+            <div></div>
+            <div>
+                <div style="text-align:center; height:10rem; line-height:9rem; color:#fefefe; font-size:24pt; font-family:Courier New;">
+                  SSSD Innovation Lab
+                </div>
                 <div
                     style="
-                        text-align: center;
-                        font-weight: bold;
-                        border-bottom: solid 1px #cccccc;
-                        margin-bottom: 8px;
+                        background-color: #333333aa;
+                        padding: 1em;
+                        color: white;
                     "
                 >
-                    News
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Blanditiis in optio, quo dolores ex libero qui adipisci iure
+                    quisquam. Culpa possimus exercitationem voluptatibus eos
+                    eligendi expedita nihil alias unde dolores. Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Atque illum
+                    soluta sint quam maiores corrupti, consequuntur ullam
+                    inventore consectetur error dignissimos cupiditate eveniet
+                    qui sapiente minima ipsum nulla itaque aut.
                 </div>
                 <div
-                    v-for="item in newsItems"
-                    :key="item.title"
                     class="panel"
-                    style="margin-bottom: 3px; cursor:pointer;"
+                    style="
+                        display: grid;
+                        grid-gap: 8px;
+                        grid-template-columns: 33% 33% 33%;
+                        justify-content: center;
+                    "
                 >
-                    <div>{{ item.title }}</div>
-                    <div style="color: #666666">{{ item.detail }}</div>
+                    <Card
+                        v-for="item in newsItems"
+                        :key="item.title"
+                        style="width: 100%"
+                    >
+                        <template #header>
+                            <img
+                                :alt="item.title"
+                                :src="require(`@/assets/${item.image}`)"
+                            />
+                        </template>
+                        <template #title>
+                            {{ item.title }}
+                        </template>
+                        <template #content>
+                            {{ item.detail }}
+                        </template>
+                    </Card>
                 </div>
             </div>
+
+            <div></div>
         </div>
-        <div class="panel" style="margin-top: 8px; height:250px;"></div>
     </div>
 </template>
 
 <script>
-    import api from '@/api/api';
-
     export default {
-        data() {
-            return {
-                images: null,
-                responsiveOptions: [
-                    {
-                        breakpoint: '1024px',
-                        numVisible: 5
-                    },
-                    {
-                        breakpoint: '768px',
-                        numVisible: 3
-                    },
-                    {
-                        breakpoint: '560px',
-                        numVisible: 1
-                    }
-                ],
-                newsItems: [
-                    {
-                        title: 'First Post',
-                        detail: 'This is the first post'
-                    },
-                    {
-                        title: 'Second Post',
-                        detail: 'This is the second post'
-                    }
-                ]
-            };
-        },
-        mounted() {
-            this.images = api.getImages();
-        }
+        data: () => ({
+            images: null,
+            newsItems: [
+                {
+                    title: 'Latest',
+                    detail: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                    image: 'img1.jpg'
+                },
+                {
+                    title: 'Three',
+                    detail: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                    image: 'img2.jpg'
+                },
+                {
+                    title: 'Posts',
+                    detail: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                    image: 'img3.jpg'
+                }
+            ]
+        })
     };
 </script>
 
-<style scoped>
-    .thumbnails {
-        justify-content: center;
-        display: grid;
-    }
-</style>
+<style scoped></style>
