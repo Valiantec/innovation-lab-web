@@ -1,5 +1,7 @@
 <template>
   <AppTriView>
-    <div class="panel">Contact Us</div>
+    <div class="panel">
+      About us
+    </div>
   </AppTriView>
 </template>

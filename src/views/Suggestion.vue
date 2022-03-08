@@ -1,105 +1,110 @@
 <template>
-  <div
-    style="display: grid; grid-gap: 8px; grid-template-columns: 20% auto 20%"
-  >
-    <div></div>
-    <div>
-      <h2 style="color: #fefefe">Suggestions</h2>
-      <div class="panel child-margin-8">
-        <TabView>
-          <TabPanel header="Add New">
-            <Panel header="Add a Suggestion">
-                <span class="p-float-label input-field">
-                  <InputText id="name" type="text" v-model="name" />
-                  <label for="name">Name</label>
-                </span>
-
-                <span
-                  class="p-float-label input-field"
-                  style="margin-top: 24px"
-                >
-                  <Textarea
-                    id="suggestion"
-                    :autoResize="true"
-                    rows="5"
-                    cols="54"
-                    v-model="suggestion"
-                  />
-                  <label for="suggestion">Suggestion</label>
-                </span>
-                <div style="display:flex;justify-content:right;">
-                <Button
-                  label="Submit"
-                  icon="pi pi-check"
-                  iconPos="right"
-                  style="margin-top:4px;"
-                  @click="submitSuggestion()"
-                />
-                </div>
-            </Panel>
-          </TabPanel>
-          <TabPanel header="Other Suggestions">
-            <Card v-for="sugg in suggestionLog" :key="sugg.creationDate" style="margin-bottom:12px;">
-              <template #title>
-                {{ sugg.author }}
-              </template>
-              <template #subtitle>
-                {{ new Date(sugg.creationDate).toLocaleString() }}
-              </template>
-              <template #content>
-                {{ sugg.body }}
-              </template>
-            </Card>
-          </TabPanel>
-        </TabView>
-      </div>
-      <div></div>
-    </div>
-  </div>
+    <AppTriView>
+        <div class="rounded-corners md-elevation-2">
+            <TabView>
+                <TabPanel header="Add New">
+                    <Panel header="New Suggestion">
+                        <div class="child-margin-8">
+                            <HorizontalFlowPanel style="align-items: center">
+                                <InputText
+                                    type="text"
+                                    v-model="author"
+                                    style="width: 250px"
+                                    placeholder="Name"
+                                />
+                            </HorizontalFlowPanel>
+                            <HorizontalFlowPanel>
+                                <Textarea
+                                    :autoResize="true"
+                                    rows="5"
+                                    v-model="suggestion"
+                                    style="width: 30rem"
+                                    placeholder="Suggestion"
+                                />
+                            </HorizontalFlowPanel>
+                        </div>
+                        <div style="display: flex; justify-content: right">
+                            <Button
+                                label="Submit"
+                                icon="pi pi-check"
+                                iconPos="right"
+                                @click="submitSuggestion()"
+                                class="md-elevation-1"
+                            />
+                        </div>
+                    </Panel>
+                </TabPanel>
+                <TabPanel header="Other Suggestions">
+                    <Card
+                        v-for="s in suggestionLog"
+                        :key="s.creationDate"
+                        style="margin-bottom: 12px"
+                    >
+                        <template #title>
+                            {{ s.author }}
+                        </template>
+                        <template #subtitle>
+                            {{ new Date(s.creationDate).toLocaleString() }}
+                        </template>
+                        <template #content>
+                            <div style="white-space: pre-wrap">
+                                {{ s.content }}
+                            </div>
+                        </template>
+                    </Card>
+                </TabPanel>
+            </TabView>
+        </div>
+    </AppTriView>
 </template>
 
 <script>
-import api from "../api";
-export default {
-  data: () => ({
-    name: "",
-    suggestion: "",
-    suggestionLog: [],
-  }),
-  methods: {
-    submitSuggestion() {
-      api.suggestion
-        .addSuggestion(this.name, this.suggestion)
-        .then(() => {
-          this.suggestionLog.unshift({
-            author: this.name,
-            body: this.suggestion,
-            creationDate: Date.now(),
-          });
-          this.$toast.add({
-            severity: "success",
-            summary: "Suggestion Sent",
-            life: 3000,
-            closable: false,
-          });
-        })
-        .catch((err) => {
-          this.$toast.add({
-            severity: "error",
-            summary: "Failed to Send Your Suggestion",
-            detail: err.response.data.message,
-            life: 3000,
-            closable: false,
-          });
-        });
-    },
-  },
-  mounted() {
-    api.suggestion.getAll().then((res) => {
-      this.suggestionLog = res.data.reverse();
-    });
-  },
-};
+    import api from '../api';
+    export default {
+        data: () => ({
+            author: '',
+            suggestion: '',
+            suggestionLog: []
+        }),
+        methods: {
+            submitSuggestion() {
+                api.suggestion
+                    .addSuggestion(this.author, this.suggestion)
+                    .then(() => {
+                        this.suggestionLog.unshift({
+                            author: this.author,
+                            content: this.suggestion,
+                            creationDate: new Date(Date.now())
+                        });
+                        this.$toast.add({
+                            severity: 'success',
+                            summary: 'Suggestion Sent',
+                            life: 3000,
+                            closable: false
+                        });
+                    })
+                    .catch((err) => {
+                        this.$toast.add({
+                            severity: 'error',
+                            summary: 'Failed to Send Your Suggestion',
+                            detail: err.response.data.message,
+                            life: 3000,
+                            closable: false
+                        });
+                    });
+            }
+        },
+        mounted() {
+            api.suggestion
+                .getAll()
+                .then((res) => {
+                    this.suggestionLog = res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    };
 </script>
 
 <style scoped></style>

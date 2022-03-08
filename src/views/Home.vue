@@ -4,14 +4,13 @@
             style="
                 display: grid;
                 grid-gap: 8px;
-                grid-template-columns: 20% auto 20%;
+                grid-template-columns: 10% auto 10%;
             "
         >
             <div></div>
             <div>
-                <div style="text-align:center; height:10rem; line-height:9rem; color:#fefefe; font-size:24pt; font-family:Courier New;">
-                  SSSD Innovation Lab
-                </div>
+                <img src="@/assets/lablogo.svg" style="max-width: 150px;display:block;margin-inline:auto;margin-block:2rem;" />
+
                 <div
                     style="
                         background-color: #333333aa;
