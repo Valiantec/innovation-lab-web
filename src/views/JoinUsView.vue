@@ -78,7 +78,7 @@
                             closable: false
                         })
                     "
-                    class="md-elevation-1"
+                    class="p-button-raised"
                 />
             </div>
         </div>

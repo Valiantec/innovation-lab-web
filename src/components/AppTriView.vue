@@ -9,12 +9,13 @@
         <div>
             <slot name="left" />
         </div>
-        <div class="child-margin-8">
+        <div>
             <Breadcrumb
                 v-if="breadcrumb"
                 :home="breadcrumbData.home"
                 :model="breadcrumbData.items"
                 class="md-elevation-2"
+                style="margin-bottom:8px;"
             />
             <div>
                 <slot />

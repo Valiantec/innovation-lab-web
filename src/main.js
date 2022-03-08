@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
@@ -24,11 +25,15 @@ import Button from 'primevue/button';
 import Galleria from 'primevue/galleria';
 import Toast from 'primevue/toast';
 import FileUpload from 'primevue/fileupload';
+import OverlayPanel from 'primevue/overlaypanel';
+import Dialog from 'primevue/dialog';
 
 // Custom Components
 import AppTriView from '../src/components/AppTriView.vue';
 import HorizontalFlowPanel from '../src/components/HorizontalFlowPanel.vue';
 import VerticalFlowPanel from '../src/components/VerticalFlowPanel.vue';
+
+import './firebase';
 
 const app = createApp(App);
 
@@ -50,6 +55,8 @@ app.component('Button', Button);
 app.component('Galleria', Galleria);
 app.component('Toast', Toast);
 app.component('FileUpload', FileUpload);
+app.component('OverlayPanel', OverlayPanel);
+app.component('Dialog', Dialog);
 
 app.component('AppTriView', AppTriView);
 app.component('HorizontalFlowPanel', HorizontalFlowPanel);

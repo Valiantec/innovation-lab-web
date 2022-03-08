@@ -16,7 +16,7 @@
             <div
                 style="
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: center;
                     align-items: center;
                 "
             >
@@ -59,8 +59,27 @@
             </div>
         </router-link> -->
             </div>
+            <template #right>
+                <div
+                    style="
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    "
+                >
+                    <Button
+                        label="Log in"
+                        class="p-button-text"
+                        @click="loginDialogVisible = true"
+                    />
+                </div>
+            </template>
         </AppTriView>
     </div>
+    <Dialog position="topright" :modal="true" v-model:visible="loginDialogVisible" header="Log in">
+        <LoginPanel />
+    </Dialog>
 
     <!-- Content -->
     <div style="margin-top: 5em">
@@ -82,7 +101,11 @@
 </template>
 
 <script>
+    import LoginPanel from './components/LoginPanel.vue';
     export default {
+        components: {
+            LoginPanel
+        },
         data: () => ({
             navItems: [
                 { label: 'About us', to: '/about-us' },
@@ -90,12 +113,24 @@
                 { label: 'Contact us', to: '/contact-us' },
                 { label: 'Suggestions', to: '/suggestions' },
                 { label: 'Forms', to: '/forms' }
-            ]
-        })
+            ],
+            loginDialogVisible: false
+        }),
+        methods: {}
     };
 </script>
 
 <style>
+    :root {
+        --color-primary: #1eafe4;
+        --color-primary-light: #6be1ff;
+        --color-primary-dark: #0080b2;
+        --color-secondary: #70e0c1;
+        --color-secondary-light: #a4fff4;
+        --color-secondary-dark: #39ae91;
+        --color-text-dark: #212121;
+        --color-text-light: #fafafa;
+    }
     #app {
         font-family: 'Roboto', Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

@@ -29,7 +29,7 @@
                                 icon="pi pi-check"
                                 iconPos="right"
                                 @click="submitSuggestion()"
-                                class="md-elevation-1"
+                                class="p-button-raised"
                             />
                         </div>
                     </Panel>

@@ -19,7 +19,7 @@
                                 label="Download"
                                 @click="download(file.uri)"
                                 style="display: block; margin-inline: auto"
-                                class="md-elevation-1"
+                                class="p-button-raised"
                             />
                         </template>
                     </Card>
