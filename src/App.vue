@@ -20,7 +20,7 @@
                     align-items: center;
                 "
             >
-                <router-link to="/">
+                <router-link to="/" style="outline:none;background:none;">
                     <div style="padding-inline: 1rem; height: 64px">
                         <img
                             src="@/assets/lablogo-notext.svg"
@@ -108,6 +108,7 @@
         },
         data: () => ({
             navItems: [
+                { label: 'Home', to: '/' },
                 { label: 'About us', to: '/about-us' },
                 { label: 'Join us', to: '/join-us' },
                 { label: 'Contact us', to: '/contact-us' },
@@ -181,7 +182,7 @@
 
     a.router-link-exact-active {
         background-color: rgb(232, 255, 246);
-        outline: solid 7px rgb(166, 255, 218);
+        outline: solid 3px rgb(166, 255, 218);
         font-weight: bold;
     }
 

@@ -9,7 +9,15 @@
         >
             <div></div>
             <div>
-                <img src="@/assets/lablogo.svg" style="max-width: 150px;display:block;margin-inline:auto;margin-block:2rem;" />
+                <img
+                    src="@/assets/lablogo.svg"
+                    style="
+                        max-width: 150px;
+                        display: block;
+                        margin-inline: auto;
+                        margin-block: 2rem;
+                    "
+                />
 
                 <div
                     style="

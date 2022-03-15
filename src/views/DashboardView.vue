@@ -4,9 +4,7 @@
             <PanelMenu :model="leftNavItems" />
         </template>
 
-        <div class="panel">
-            mid
-        </div>
+        <div class="panel">mid</div>
 
         <template #right>
             <div class="panel">right</div>
